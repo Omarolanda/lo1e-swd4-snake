@@ -45,5 +45,5 @@ console.log("direction");
 
 drawBackground();
 drawSnake();
-setInterval(update, 1000);
+setInterval(update, 100);
 addEventListener("keydown", changeDirection);
