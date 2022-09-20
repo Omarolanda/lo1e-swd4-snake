@@ -5,6 +5,9 @@ let snakeX = 200;
 let snakeY = 200;
 let direction = "null";
 
+let foodX;
+let foodY;
+
 function drawBackground() {
   context.fillStyle = "black";
   context.fillRect(0, 0, 400, 400);
@@ -44,6 +47,7 @@ function update() {
 
   drawBackground();
   drawSnake();
+  drawFood();
 }
 function changeDirection(event) {
   if (event.code == "ArrowUp") {
@@ -58,13 +62,21 @@ function changeDirection(event) {
 
   console.log("direction");
 }
-
 function gameOver() {
   direction = null;
   alert("game Over!");
+}
+function spawnFood() {
+  foodX = Math.floor(Math.random() * 20) * 20;
+  foodY = Math.floor(Math.random() * 20) * 20;
+}
+function drawFood() {
+  context.fillStyle = "red";
+  context.fillRect(foodX, foodY, 20, 20);
 }
 
 drawBackground();
 drawSnake();
 setInterval(update, 100);
 addEventListener("keydown", changeDirection);
+spawnFood();
