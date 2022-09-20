@@ -17,30 +17,51 @@ function drawSnake() {
 
 function update() {
   if (direction == "right") {
-    snakeX += 20;
+    if (snakeX < 380) {
+      snakeX += 20;
+    } else {
+      gameOver();
+    }
   } else if (direction == "left") {
-    snakeX -= 20;
+    if (snakeX > 0) {
+      snakeX -= 20;
+    } else {
+      gameOver();
+    }
   } else if (direction == "up") {
-    snakeY -= 20;
+    if (snakeY > 0) {
+      snakeY -= 20;
+    } else {
+      gameOver();
+    }
   } else if (direction == "down") {
-    snakeY += 20;
+    if (snakeY < 380) {
+      snakeY += 20;
+    } else {
+      gameOver();
+    }
   }
 
   drawBackground();
   drawSnake();
 }
 function changeDirection(event) {
-if (event.code == "ArrowUp"){
-  direction = "up";
-}else if (event.code == "ArrowRight"){
-  direction = "right";
-}else if (event.code == "ArrowLeft"){
-  direction = "left";
-}else if (event.code == "ArrowDown"){
-  direction = "down";
+  if (event.code == "ArrowUp") {
+    direction = "up";
+  } else if (event.code == "ArrowRight") {
+    direction = "right";
+  } else if (event.code == "ArrowLeft") {
+    direction = "left";
+  } else if (event.code == "ArrowDown") {
+    direction = "down";
+  }
+
+  console.log("direction");
 }
 
-console.log("direction");
+function gameOver() {
+  direction = null;
+  alert("game Over!");
 }
 
 drawBackground();
